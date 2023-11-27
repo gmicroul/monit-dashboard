@@ -1,0 +1,14 @@
+{
+  "Server A": {
+    "url": "http://192.168.2.38:2812",
+    "user": "admin",
+    "passwd": "monit"
+  },
+
+  "Server B": {
+    "url": "http://192.168.2.249:2812",
+    "user": "monit",
+    "passwd": "secret"
+  }
+
+}
