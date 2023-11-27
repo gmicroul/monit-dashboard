@@ -67,7 +67,7 @@ def getMonit():
                 checks[name] = status[name]
 
             sorted_checks = OrderedDict()
-            sorted_checks = OrderedDict(sorted(checks.iteritems(),
+            sorted_checks = OrderedDict(sorted(checks.items(),
                                                key=itemgetter(1), reverse=True))
             count = calculate_count(sorted_checks)
             server = dict(name=site, url=s['url'],
