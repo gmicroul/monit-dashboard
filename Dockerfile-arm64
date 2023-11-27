@@ -1,0 +1,13 @@
+FROM python:3.7.5-slim
+
+WORKDIR /app
+COPY . .
+RUN apt update -y && apt install -y vim \
+ && python -m pip install web.py \
+ && pip install xmltodict \
+ && pip install requests \
+ && pip install xlsxwriter \
+ && pip install --upgrade pip
+
+#RUN apt update -y && apt install -y python-webpy python-xmltodict python-requests python-xlsxwriter
+CMD ["/usr/local/bin/python","/app/bin/monit-dashboard.py"]
