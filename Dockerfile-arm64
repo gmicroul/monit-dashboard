@@ -1,13 +1,18 @@
-FROM python:3.7.5-slim
+FROM python:3.9-slim
 
 WORKDIR /app
 COPY . .
-RUN apt update -y && apt install -y vim \
+RUN apt update -y && apt install -y vim systemctl monit \
  && python -m pip install web.py \
  && pip install xmltodict \
  && pip install requests \
  && pip install xlsxwriter \
- && pip install --upgrade pip
+ && pip install --upgrade pip \
+ && mv monitrc /etc/monit/monitrc \
+ && chmod 0700 /etc/monit/monitrc \
+ && systemctl enable monit \
+ && systemctl start monit \
+ && chmod +x entrypoint.sh
 
-#RUN apt update -y && apt install -y python-webpy python-xmltodict python-requests python-xlsxwriter
-CMD ["/usr/local/bin/python","/app/bin/monit-dashboard.py"]
+EXPOSE 8080 2812 80
+ENTRYPOINT ["./entrypoint.sh"]
