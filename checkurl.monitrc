@@ -1,0 +1,8 @@
+check host xxx.com with address xxx.com
+  if failed 
+     port 443 with tls options { version: tlsv13 } 
+     with protocol https method GET 
+     with http headers [Host: xxx.com, User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML) Chrome/103.0.5060.114 Safari/537.36 Edg/103.0.1264.49] 
+     and request "/54278.html" with content = "Goolge Apps" 
+     and timeout 10 seconds for 3 cycles
+  then alert
